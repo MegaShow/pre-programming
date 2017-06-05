@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1409237912 source:f:\嘉\使用dll\main.cpp
+	<tchar.h>
+	<windows.h>
+	"LSW.h"
+
+1409237958 f:\嘉\使用dll\lsw.h
+

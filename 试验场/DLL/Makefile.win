@@ -1,0 +1,35 @@
+# Project: LSW
+# Makefile created by Dev-C++ 5.7.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = LSW_private.res
+OBJ      = dllmain.o $(RES)
+LINKOBJ  = dllmain.o $(RES)
+LIBS     = -L"F:/嘉/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"F:/嘉/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"F:/嘉/Dev-Cpp/MinGW32/include"
+BIN      = LSW.dll
+CXXFLAGS = $(CXXINCS) -g3 -DBUILDING_DLL=1
+CFLAGS   = $(INCS) -g3 -DBUILDING_DLL=1
+RM       = rm.exe -f
+DEF      = libLSW.def
+STATIC   = libLSW.a
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN) $(DEF) $(STATIC)
+
+$(BIN): $(LINKOBJ)
+	$(CPP) -shared $(LINKOBJ) -o $(BIN) $(LIBS) -Wl,--output-def,$(DEF),--out-implib,$(STATIC),--add-stdcall-alias
+
+dllmain.o: dllmain.cpp
+	$(CPP) -c dllmain.cpp -o dllmain.o $(CXXFLAGS)
+
+LSW_private.res: LSW_private.rc 
+	$(WINDRES) -i LSW_private.rc --input-format=rc -o LSW_private.res -O coff 
+

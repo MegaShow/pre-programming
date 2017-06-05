@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1414847380 source:f:\嘉\大\winapi assistant\main.cpp
+	<tchar.h>
+	<cstring>
+	<string>
+	<windows.h>
+
